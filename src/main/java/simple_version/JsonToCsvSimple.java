@@ -1,4 +1,4 @@
-package data_preparation;
+package simple_version;
 
 import java.io.FileReader;
 import java.io.FileWriter;
