@@ -29,8 +29,6 @@ public class JsonToCsvSimple {
             JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
             JSONArray records = (JSONArray) jsonObject.get("records");
 
-            StringBuilder stringBuilder = new StringBuilder();
-
             fileWriter = new FileWriter("csv_output.csv");
             csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT.withHeader(CSV_HEADER));
             Iterator i = records.iterator();
