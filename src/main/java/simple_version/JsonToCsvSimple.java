@@ -17,7 +17,6 @@ import org.json.simple.parser.JSONParser;
 public class JsonToCsvSimple {
 
     private static final String filePath = "src\\main\\resources\\statuses.json";
-    final static String[] CSV_HEADER = {"kontakt_id", "klient_id", "pracownik_id", "status", "kontakt_ts"};
 
     public static void main(String[] args) {
 
@@ -30,12 +29,12 @@ public class JsonToCsvSimple {
             JSONArray records = (JSONArray) jsonObject.get("records");
 
             fileWriter = new FileWriter("csv_output.csv");
-            csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT.withHeader(CSV_HEADER));
+            csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT);
+            csvPrinter.printRecord("kontakt_id | klient_id | pracownik_id | status | kontakt_ts");
             Iterator i = records.iterator();
 
             SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             Date date_filtr = inputDateFormat.parse("2017-07-01 00:00:00");
-            // Date date = inputDateFormat.parse(innerObj.get("kontakt_ts"));
 
             while (i.hasNext()) {
                 JSONObject innerObj = (JSONObject) i.next();
